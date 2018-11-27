@@ -12,15 +12,20 @@ const productsTableRow = (props) => {
     props.handleClick(product);
   };
 
+  let avatar = "";
+  if(product.cover !== null) {
+    avatar = <Avatar alt={product.title} src={product.cover.path}/>;
+  }
+
   return (
     <TableRow styleName="row" onClick={rowClicked}>
       <TableCell>
-        <Avatar alt={product.title} src={product.coverImage}/>
+        {avatar}
       </TableCell>
       <TableCell component="th" scope="row" styleName="title">
         {product.title}
       </TableCell>
-      <TableCell>{product.category}</TableCell>
+      <TableCell>{product.category.title}</TableCell>
       <TableCell numeric>{product.stock}</TableCell>
       <TableCell>{product.unit}</TableCell>
     </TableRow>

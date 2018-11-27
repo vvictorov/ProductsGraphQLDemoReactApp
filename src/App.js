@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import ProductsList from './containers/products-list-container';
-import ProductsTable from './containers/products-table-container';
+import ProductsTable from './containers/products-table-apollo-container';
 import ModalsContainer from './containers/modal-controller-container';
 import NotificationsContainer from './containers/notifications-container';
 import Header from './components/header/Header';

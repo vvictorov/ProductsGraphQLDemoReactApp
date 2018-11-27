@@ -1,0 +1,15 @@
+{
+    products{
+        id,
+        title,
+        stock,
+        unit,
+        category {
+            id,
+            title
+        }
+        cover {
+            path
+        }
+    }
+}

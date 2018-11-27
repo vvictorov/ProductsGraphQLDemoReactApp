@@ -8,6 +8,8 @@ import {Provider} from 'react-redux';
 import allReducers from './reducers';
 import {createEpicMiddleware} from 'redux-observable';
 import {allEpics} from "./epics";
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from "react-apollo";
 
 // Material UI Typography
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
@@ -23,9 +25,15 @@ const store = createStore(
 
 epicMiddleware.run(allEpics);
 
+const client = new ApolloClient({
+  uri: "http://localhost:51209/graphql"
+});
+
 ReactDOM.render((
-  <Provider store={store}>
-    <App/>
-  </Provider>
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  </ApolloProvider>
 ), document.getElementById('root'));
 registerServiceWorker();
