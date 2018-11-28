@@ -2,26 +2,11 @@ import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ProductsTable from '../components/products-table/ProductsTable';
+import productsQuery from '../queries/products.graphql';
 
 const ProductsApolloContainer = () => (
   <Query
-    query={gql`
-      {
-          products{
-              id,
-              title,
-              stock,
-              unit,
-              category {
-                id,
-                title
-              }
-              cover {
-                  path
-              }
-          }
-}
-    `}
+    query={productsQuery}
   >
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;

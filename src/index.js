@@ -10,6 +10,7 @@ import {createEpicMiddleware} from 'redux-observable';
 import {allEpics} from "./epics";
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from "react-apollo";
+import {Constants} from "./utils/constants";
 
 // Material UI Typography
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
@@ -26,7 +27,7 @@ const store = createStore(
 epicMiddleware.run(allEpics);
 
 const client = new ApolloClient({
-  uri: "http://localhost:51209/graphql"
+  uri: Constants.Api.GraphQLUrl
 });
 
 ReactDOM.render((

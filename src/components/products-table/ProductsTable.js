@@ -89,7 +89,8 @@ class ProductsTable extends React.Component {
 
   render() {
     const data = this.props.products.map(product => {
-      return [product.id, product.cover.path, product.title, product.category.title, product.stock, product.unit];
+      const cover = (product.cover !== null) ? product.cover.path : null;
+      return [product.id, cover, product.title, product.category.title, product.stock, product.unit];
     });
     return(
       <div styleName="table">
