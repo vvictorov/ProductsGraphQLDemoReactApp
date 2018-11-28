@@ -1,14 +1,6 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import CSSModules from 'react-css-modules';
 import styles from './products-table.module.css';
-import {Constants} from '../../utils/constants';
-import ProductsTableRow from '../products-table/ProductsTableRow';
 import MUIDataTable from "mui-datatables";
 import Avatar from '@material-ui/core/Avatar/Avatar';
 
@@ -76,15 +68,16 @@ class ProductsTable extends React.Component {
       filterType: 'checkbox',
       selectableRows: false,
       onRowClick: (rowData, rowMeta) => {
-        const productId = rowData[0];
-        const product = this.props.products.find(x => x.id === productId);
-        this.rowClicked(product);
+        this.props.openModal();
+        // const productId = rowData[0];
+        // const product = this.props.products.find(x => x.id === productId);
+        // this.rowClicked(product);
       }
     };
   }
 
   componentDidMount() {
-    // this.props.fetchProducts();
+
   }
 
   render() {
@@ -105,8 +98,7 @@ class ProductsTable extends React.Component {
   }
 
   rowClicked = (product) => {
-    this.props.selectProduct(product);
-    this.props.openModal(Constants.ModalDialogs.UpdateProduct, {product});
+
   };
 }
 
