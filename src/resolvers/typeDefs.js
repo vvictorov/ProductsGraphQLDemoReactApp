@@ -1,6 +1,11 @@
 const typeDefs = `
+  type Modal {
+    __typename: Modal
+    name: String!
+  }
+  
   type Query {
-    modals: [String]
+      modals: [Modal]
   }
 `;
 

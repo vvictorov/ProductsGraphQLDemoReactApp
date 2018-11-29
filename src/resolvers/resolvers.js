@@ -4,20 +4,21 @@ export const resolvers = {
   Mutation: {
     openModal: (_, { name }, { cache }) => {
 
-        const result = cache.readQuery({query: modalQuery});
+        const {modals: currentModals} = cache.readQuery({query: modalQuery});
 
+        const data = {
+          modals: [...currentModals, {
+            __typename: "Modal",
+            name: name
+          }]
+        };
 
-        const modalNames = result.modals;
-
-        console.log(modalNames);
-
-        return null;
-
-        cache.writeData({
-            modals: [...modalNames, name]
+        cache.writeQuery({
+          query: modalQuery,
+          data
         });
 
-      return null;
+      return name;
     }
   }
 };
