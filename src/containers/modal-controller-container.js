@@ -1,20 +1,20 @@
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React from 'react';
+import {Query} from "react-apollo";
+import modalsQuery from '../queries/modals.graphql';
 import ModalsController from '../components/modals/ModalsController';
-import {closeModalAction, openModalAction} from '../actions/modals/modal-actions';
 
-function mapStateToProps(state) {
-  return {
-    modals: state.modals,
-    activeProduct: state.activeProduct
-  };
-}
+const ModalsContainer = () => {
+  return (
+    <Query query={modalsQuery}>
+      {({ data }) => {
+        return <ModalsController modals={data.modals} closeModal={closeModal}/>
+      }}
+    </Query>
+  );
+};
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    openModal: openModalAction,
-    closeModal: closeModalAction
-  }, dispatch);
-}
+const closeModal = (modalName) => {
+  console.log(modalName);
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalsController);
+export default ModalsContainer;

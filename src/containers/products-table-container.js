@@ -1,10 +1,11 @@
 import React from 'react';
-import {Mutation, Query, graphql, compose} from "react-apollo";
+import {graphql, compose} from "react-apollo";
 import ProductsTable from '../components/products-table/ProductsTable';
 import productsQuery from '../queries/products.graphql';
-import {Constants} from "../utils/constants";
 import openModal from '../mutations/openModal.graphql'
-import gql from "graphql-tag";
+import {Constants} from '../utils/constants';
+
+let updateModalOpenMutation = null;
 
 const ProductsTableContainer = (props) => {
 
@@ -19,10 +20,20 @@ const ProductsTableContainer = (props) => {
     return <div>Error...</div>;
   }
 
+  updateModalOpenMutation = openModal;
+
   return <ProductsTable
     products={products}
-    openModal={openModal}
+    openUpdateModal={openUpdateProductModal}
   />;
+};
+
+const openUpdateProductModal = () => {
+  updateModalOpenMutation({
+    variables: {
+      name: Constants.ModalDialogs.UpdateProduct
+    }
+  });
 };
 
 const WrappedComponent = compose(

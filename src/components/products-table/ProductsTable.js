@@ -69,11 +69,7 @@ class ProductsTable extends React.Component {
       filterType: 'checkbox',
       selectableRows: false,
       onRowClick: (rowData, rowMeta) => {
-        this.props.openModal({
-          variables: {
-            name: Constants.ModalDialogs.UpdateProduct
-          }
-        });
+        this.props.openUpdateModal();
         // const productId = rowData[0];
         // const product = this.props.products.find(x => x.id === productId);
         // this.rowClicked(product);

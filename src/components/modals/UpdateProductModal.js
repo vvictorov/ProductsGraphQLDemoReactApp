@@ -5,7 +5,6 @@ import DialogTitle from '@material-ui/core/es/DialogTitle/DialogTitle';
 import DialogContent from '@material-ui/core/es/DialogContent/DialogContent';
 import TextField from '@material-ui/core/es/TextField/TextField';
 import DialogActions from '@material-ui/core/es/DialogActions/DialogActions';
-import {Field, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import FormControl from "@material-ui/core/es/FormControl/FormControl";
@@ -40,13 +39,8 @@ class UpdateProductModal extends React.Component {
 
   render() {
 
-    if(Object.keys(this.props.product).length === 0 && this.props.product.constructor === Object) {
-      return <div/>;
-    }
-
     return (
       <div>
-        <form onSubmit={product => this.props.onSubmit}>
           <Dialog
             open={this.props.isOpen}
             onClose={this.props.close}
@@ -57,11 +51,11 @@ class UpdateProductModal extends React.Component {
 
             <DialogTitle id="form-dialog-title">Промени продукт</DialogTitle>
             <DialogContent>
-
-              <Field name="title" component={this.renderTitleField} />
-              <Field name="categoryId" component={this.renderCategoryField} />
-              <Field name="stock" component={this.renderStockField} />
-              <Field name="unit" component={this.renderUnitField} />
+              Update product dialog
+              {/*<Field name="title" component={this.renderTitleField} />*/}
+              {/*<Field name="categoryId" component={this.renderCategoryField} />*/}
+              {/*<Field name="stock" component={this.renderStockField} />*/}
+              {/*<Field name="unit" component={this.renderUnitField} />*/}
             </DialogContent>
             <DialogActions>
               <Button onClick={this.onCancel} color="primary">
@@ -72,7 +66,6 @@ class UpdateProductModal extends React.Component {
               </Button>
             </DialogActions>
           </Dialog>
-        </form>
       </div>
     );
   }
@@ -145,39 +138,17 @@ class UpdateProductModal extends React.Component {
   };
 
   onCancel() {
-    this.props.reset();
+    // this.props.reset();
     this.props.close();
   }
 
   onSubmit() {
-    this.props.submit();
+    // this.props.submit();
     this.props.close();
-    setTimeout(() => {
-      this.props.reset();
-    }, 200);
+    // setTimeout(() => {
+    //   this.props.reset();
+    // }, 200);
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    product: state.activeProduct,
-    initialValues: {
-      ...state.activeProduct
-    }
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    onSubmit: updateProductRequestAction,
-
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-  form: Constants.Forms.ProductsUpdate,
-  enableReinitialize: true,
-  validate
-})(
-  withMobileDialog() (UpdateProductModal)
-));
+export default withMobileDialog() (UpdateProductModal);

@@ -9,6 +9,7 @@ export const resolvers = {
         const data = {
           modals: [...currentModals, {
             __typename: "Modal",
+            id: idGenerator.next().value,
             name: name
           }]
         };
@@ -22,3 +23,14 @@ export const resolvers = {
     }
   }
 };
+
+function * generateId () {
+  let num = 1;
+  while (true) {
+    yield num;
+    num = num + 1
+  }
+
+}
+
+const idGenerator = generateId();

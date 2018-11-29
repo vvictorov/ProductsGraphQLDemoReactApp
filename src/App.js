@@ -3,6 +3,7 @@ import './App.css';
 import ProductsTable from './containers/products-table-container';
 import ProductsList from './containers/products-list-container';
 import Header from './components/header/Header';
+import ModalsContainer from './containers/modal-controller-container';
 
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
           <ProductsList/>
           <ProductsTable/>
         </div>
-        {/*<ModalsContainer/>*/}
+        <ModalsContainer/>
         {/*<NotificationsContainer/>*/}
       </div>
     );
