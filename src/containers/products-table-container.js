@@ -1,26 +1,39 @@
 import React from 'react';
-import {Mutation, Query} from "react-apollo";
+import {Mutation, Query, graphql, compose} from "react-apollo";
 import ProductsTable from '../components/products-table/ProductsTable';
 import productsQuery from '../queries/products.graphql';
 import {Constants} from "../utils/constants";
 import openModal from '../mutations/openModal.graphql'
+import gql from "graphql-tag";
 
-const ProductsTableContainer = () => (
+const ProductsTableContainer = (props) => {
 
-  <Query query={productsQuery}>
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
+  const {loading, error, networkStatus, products} = props;
+  const {openModal} = props;
 
-      return (
-        <Mutation mutation={openModal} variables={{ name: Constants.ModalDialogs.UpdateProduct }}>
-          { openModalMutation =>
-            <ProductsTable products={data.products} openModal={openModalMutation}/>
-          }
-        </Mutation>
-      );
-    }}
-  </Query>
-);
+  if(loading === true) {
+    return <div>Loading...</div>;
+  }
 
-export default ProductsTableContainer;
+  if(error) {
+    return <div>Error...</div>;
+  }
+
+  return <ProductsTable
+    products={products}
+    openModal={openModal}
+  />;
+};
+
+const WrappedComponent = compose(
+  graphql(productsQuery, {
+    props: ({data: {loading, error, networkStatus, products}}) => {
+      return {loading, error, networkStatus, products};
+    }
+  }),
+  graphql(openModal, {name: 'openModal'})
+)
+(ProductsTableContainer);
+
+// export default ProductsTableContainer;
+export default WrappedComponent;

@@ -1,26 +1,27 @@
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 import ProductsList from '../components/products-list/ProductsGridList';
-import {addProductAction, selectProductAction, updateProductRequestAction, filterProductsAction} from '../actions/products/products-actions';
-import {closeModalAction, openModalAction} from "../actions/modals/modal-actions";
-import getVisibleProducts from '../selectors/visible-products-selector';
+import React from 'react';
+import {Mutation, Query} from "react-apollo";
+import productsQuery from '../queries/products.graphql';
+import {Constants} from "../utils/constants";
+import openModal from "../mutations/openModal.graphql";
+import ProductsTable from "../components/products-table/ProductsTable";
 
+const ProductsListContainer = () => (
 
-function mapStateToProps(state) {
-  return {
-    products: getVisibleProducts(state)
-  };
-}
+  <Query query={productsQuery}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error :(</p>;
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    addProduct: addProductAction,
-    updateProduct: updateProductRequestAction,
-    openModal: openModalAction,
-    closeModal: closeModalAction,
-    selectProduct: selectProductAction,
-    filterProducts: filterProductsAction
-  }, dispatch);
-}
+      return (
+        <Mutation mutation={openModal} variables={{ name: Constants.ModalDialogs.UpdateProduct }}>
+          { openModalMutation =>
+            <ProductsList products={data.products} openModal={openModalMutation}/>
+          }
+        </Mutation>
+      );
+    }}
+  </Query>
+);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
+export default ProductsListContainer;

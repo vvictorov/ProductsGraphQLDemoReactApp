@@ -11,7 +11,7 @@ const productsListItem = (props) => {
   const product = props.product;
   const classes = props.classes;
   const imageStyles = {
-    backgroundImage: `url(${product.cover.path})`
+    backgroundImage: (product.cover !== null) ? `url(${product.cover.path})` : ''
   };
 
   return (

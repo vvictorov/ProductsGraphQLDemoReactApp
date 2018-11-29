@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import ProductsTable from './containers/products-table-container';
+import ProductsList from './containers/products-list-container';
 import Header from './components/header/Header';
 
 
@@ -14,7 +15,7 @@ class App extends Component {
       <div className="app">
         <Header title="Съставки"/>
         <div id="page">
-          {/*<ProductsList/>*/}
+          <ProductsList/>
           <ProductsTable/>
         </div>
         {/*<ModalsContainer/>*/}
