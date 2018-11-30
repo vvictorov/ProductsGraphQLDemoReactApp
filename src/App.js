@@ -16,7 +16,7 @@ class App extends Component {
       <div className="app">
         <Header title="Съставки"/>
         <div id="page">
-          <ProductsList/>
+          {/*<ProductsList/>*/}
           <ProductsTable/>
         </div>
         <ModalsContainer/>

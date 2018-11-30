@@ -1,0 +1,9 @@
+type Modal {
+    __typename: Modal,
+    id: Int!,
+    name: String!
+}
+
+extend type Queries {
+    modals: [Modal]
+}

@@ -4,6 +4,7 @@ import ProductsTable from '../components/products-table/ProductsTable';
 import productsQuery from '../queries/products.graphql';
 import openModal from '../mutations/openModal.graphql'
 import {Constants} from '../utils/constants';
+import ProductsGridList from "../components/products-list/ProductsGridList";
 
 let updateModalOpenMutation = null;
 
@@ -22,10 +23,18 @@ const ProductsTableContainer = (props) => {
 
   updateModalOpenMutation = openModal;
 
-  return <ProductsTable
-    products={products}
-    openUpdateModal={openUpdateProductModal}
-  />;
+  return (
+    <div>
+      <ProductsTable
+        products={products}
+        openUpdateModal={openUpdateProductModal}
+      />
+      <ProductsGridList
+        products={products}
+        openUpdateModal={openUpdateProductModal}
+      />
+    </div>
+  );
 };
 
 const openUpdateProductModal = () => {
@@ -46,5 +55,4 @@ const WrappedComponent = compose(
 )
 (ProductsTableContainer);
 
-// export default ProductsTableContainer;
 export default WrappedComponent;

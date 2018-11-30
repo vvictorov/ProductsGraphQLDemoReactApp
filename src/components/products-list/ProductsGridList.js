@@ -23,7 +23,7 @@ class ProductsGridList extends React.Component {
       .map(product => <ProductsListItem product={product}
                                         key={product.id}
                                         classes={classes}
-                                        openModal={this.props.openModal}
+                                        openModal={this.props.openUpdateModal}
                                         selectProduct={this.props.selectProduct}/>);
 
     return (

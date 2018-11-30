@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "ProductsGraphQLDemo": {
+      "schemaPath": "src/schemas/remote.graphql",
+      "includes": ["src/schemas/local.graphql"],
+      "extensions": {
+        "schemaPath": "src/schemas/remote.graphql",
+        "endpoints": {
+          "dev": "http://10.112.32.5:5000/graphql"
+        }
+      }
+    }
+  }
+}

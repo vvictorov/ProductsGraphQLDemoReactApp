@@ -1,0 +1,3 @@
+mutation CloseModal($name: String!) {
+    closeModal(name: $name) @client
+}

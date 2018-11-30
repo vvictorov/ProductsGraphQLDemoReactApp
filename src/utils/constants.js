@@ -1,5 +1,5 @@
 const apiBaseUrl = "http://localhost:44314/api/";
-const graphQLApiUrl = "http://localhost:5000/graphql";
+const graphQLApiUrl = "http://10.112.32.5:5000/graphql";
 
 export const Constants = {
   Actions: {

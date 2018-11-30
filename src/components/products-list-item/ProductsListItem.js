@@ -30,8 +30,8 @@ const productsListItem = (props) => {
   );
 
   function onUpdateIconClicked() {
-    props.selectProduct(product);
-    props.openModal(Constants.ModalDialogs.UpdateProduct, {product});
+    //props.selectProduct(product);
+    props.openModal();
   }
 };
 

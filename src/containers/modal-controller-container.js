@@ -1,20 +1,36 @@
 import React from 'react';
-import {Query} from "react-apollo";
+import {compose, graphql, Query} from "react-apollo";
 import modalsQuery from '../queries/modals.graphql';
 import ModalsController from '../components/modals/ModalsController';
+import closeModal from "../mutations/closeModal.graphql";
 
-const ModalsContainer = () => {
+let updateModalCloseMutation = null;
+
+const ModalsContainer = (props) => {
+
+  updateModalCloseMutation = props.closeModal;
+
   return (
     <Query query={modalsQuery}>
       {({ data }) => {
-        return <ModalsController modals={data.modals} closeModal={closeModal}/>
+        return <ModalsController modals={data.modals} closeModal={onCloseModal}/>
       }}
     </Query>
   );
 };
 
-const closeModal = (modalName) => {
-  console.log(modalName);
+const onCloseModal = (modalName) => {
+  updateModalCloseMutation({
+    variables: {
+      name: modalName
+    }
+  });
 };
 
-export default ModalsContainer;
+
+const WrappedComponent = compose(
+  graphql(closeModal, {name: 'closeModal'})
+)
+(ModalsContainer);
+
+export default WrappedComponent;

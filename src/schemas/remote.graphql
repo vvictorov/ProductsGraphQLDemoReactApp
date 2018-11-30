@@ -1,0 +1,96 @@
+# source: http://10.112.32.5:5000/graphql
+# timestamp: Fri Nov 30 2018 17:42:04 GMT+0200 (EET)
+
+schema {
+  query: Queries
+  mutation: Mutations
+}
+
+type CategoryType {
+  id: Int!
+  products: [ProductType]
+  title: String!
+}
+
+"""
+The `Date` scalar type represents a year, month and day in accordance with the
+[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+"""
+scalar Date
+
+"""
+The `DateTime` scalar type represents a date and time. `DateTime` expects
+timestamps to be formatted in accordance with the
+[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+"""
+scalar DateTime
+
+"""
+The `DateTimeOffset` scalar type represents a date, time and offset from UTC.
+`DateTimeOffset` expects timestamps to be formatted in accordance with the
+[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
+"""
+scalar DateTimeOffset
+
+scalar Decimal
+
+"""
+The `Milliseconds` scalar type represents a period of time represented as the total number of milliseconds.
+"""
+scalar Milliseconds
+
+type Mutations {
+  createProduct(product: ProductInput!): ProductType
+}
+
+type ProductImageType {
+  id: Int!
+  path: String!
+}
+
+input ProductInput {
+  title: String!
+  stock: Float!
+  unitEnum: Unit!
+  categoryId: Int!
+}
+
+type ProductType {
+  category: CategoryType
+  cover: ProductImageType
+  id: Int!
+  stock: Float!
+  title: String!
+  unit: String!
+}
+
+type Queries {
+  categories: [CategoryType]
+  category(id: Int = null): CategoryType
+  product(id: Int = null): ProductType
+  products: [ProductType]
+}
+
+"""
+The `Seconds` scalar type represents a period of time represented as the total number of seconds.
+"""
+scalar Seconds
+
+"""The stock unit measure"""
+enum Unit {
+  """Килограми"""
+  Kg
+
+  """Грамове"""
+  G
+
+  """Килограми"""
+  L
+
+  """Милилитри"""
+  Ml
+
+  """Броя"""
+  Q
+}
+
