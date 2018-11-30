@@ -1,3 +1,7 @@
 mutation OpenModal($name: String!) {
-    openModal(name: $name) @client
+    openModal(name: $name) @client {
+        __typename,
+        id,
+        name
+    }
 }

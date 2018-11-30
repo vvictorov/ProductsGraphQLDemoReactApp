@@ -1,3 +1,7 @@
 mutation CloseModal($name: String!) {
-    closeModal(name: $name) @client
+    closeModal(name: $name) @client {
+        __typename,
+        id,
+        name
+    }
 }

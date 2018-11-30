@@ -8,9 +8,9 @@ import ProductsGridList from "../components/products-list/ProductsGridList";
 
 let updateModalOpenMutation = null;
 
-const ProductsTableContainer = (props) => {
+const ProductsContainer = (props) => {
 
-  const {loading, error, networkStatus, products} = props;
+  const {loading, error, products} = props;
   const {openModal} = props;
 
   if(loading === true) {
@@ -52,7 +52,6 @@ const WrappedComponent = compose(
     }
   }),
   graphql(openModal, {name: 'openModal'})
-)
-(ProductsTableContainer);
+)(ProductsContainer);
 
 export default WrappedComponent;

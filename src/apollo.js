@@ -7,7 +7,9 @@ import { withClientState } from 'apollo-link-state';
 import {resolvers} from './resolvers/resolvers';
 import {Constants} from "./utils/constants";
 import {defaults} from "./resolvers/defaults";
-import typeDefs from "./resolvers/typeDefs";
+import localSchema from "./schemas/local.graphql";
+
+const fixTypeDefsFormat = (typeDefs) => typeDefs.replace("extend ", "");
 
 const cache = new InMemoryCache();
 
@@ -15,7 +17,7 @@ const stateLink = withClientState({
   cache,
   resolvers,
   defaults,
-  typeDefs
+  typeDefs: fixTypeDefsFormat(localSchema)
 });
 
 const client = new ApolloClient({

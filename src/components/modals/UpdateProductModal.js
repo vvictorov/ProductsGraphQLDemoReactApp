@@ -5,29 +5,11 @@ import DialogTitle from '@material-ui/core/es/DialogTitle/DialogTitle';
 import DialogContent from '@material-ui/core/es/DialogContent/DialogContent';
 import TextField from '@material-ui/core/es/TextField/TextField';
 import DialogActions from '@material-ui/core/es/DialogActions/DialogActions';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 import FormControl from "@material-ui/core/es/FormControl/FormControl";
 import InputLabel from "@material-ui/core/es/InputLabel/InputLabel";
 import Select from "@material-ui/core/es/Select/Select";
 import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
-import {updateProductRequestAction} from "../../actions/products/products-actions";
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import {Constants} from "../../utils/constants";
-import {resetFormAction} from "../../actions/general/general-actions";
-
-const validate = values => {
-  const errors = {};
-  const requiredFields = [ 'title', 'categoryId', 'stock', 'unit' ];
-  requiredFields.forEach(field => {
-    if(!values[field]) {
-      errors[field] = 'Required';
-    }
-  });
-
-  return errors
-};
-
 
 class UpdateProductModal extends React.Component {
 

@@ -1,10 +1,5 @@
-# source: http://10.112.32.5:5000/graphql
-# timestamp: Fri Nov 30 2018 17:42:04 GMT+0200 (EET)
-
-schema {
-  query: Queries
-  mutation: Mutations
-}
+# source: http://localhost:5000/graphql
+# timestamp: Fri Nov 30 2018 23:14:35 GMT+0200 (FLE Standard Time)
 
 type CategoryType {
   id: Int!
@@ -39,7 +34,7 @@ The `Milliseconds` scalar type represents a period of time represented as the to
 """
 scalar Milliseconds
 
-type Mutations {
+type Mutation {
   createProduct(product: ProductInput!): ProductType
 }
 
@@ -64,7 +59,7 @@ type ProductType {
   unit: String!
 }
 
-type Queries {
+type Query {
   categories: [CategoryType]
   category(id: Int = null): CategoryType
   product(id: Int = null): ProductType
@@ -93,4 +88,3 @@ enum Unit {
   """Броя"""
   Q
 }
-

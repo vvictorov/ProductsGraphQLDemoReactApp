@@ -4,6 +4,13 @@ type Modal {
     name: String!
 }
 
-extend type Queries {
+extend type Query {
     modals: [Modal]
 }
+
+extend type Mutation {
+    openModal(name: String): Modal
+    closeModal(name: String): Modal
+}
+
+directive @client(param: String) on FIELD

@@ -1,5 +1,3 @@
-import TableRow from '@material-ui/core/es/TableRow/TableRow';
-import TableCell from '@material-ui/core/es/TableCell/TableCell';
 import Avatar from '@material-ui/core/es/Avatar/Avatar';
 import React from 'react';
 import CSSModules from 'react-css-modules';

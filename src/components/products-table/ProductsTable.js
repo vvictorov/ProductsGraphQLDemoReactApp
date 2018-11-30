@@ -3,7 +3,6 @@ import CSSModules from 'react-css-modules';
 import styles from './products-table.module.css';
 import MUIDataTable from "mui-datatables";
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import {Constants} from "../../utils/constants";
 
 const columns = [
   {

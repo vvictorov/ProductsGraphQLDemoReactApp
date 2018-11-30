@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Constants} from '../../utils/constants';
-import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { Slide } from 'react-toastify';
 
 class Notifications extends React.Component {
   constructor(props) {

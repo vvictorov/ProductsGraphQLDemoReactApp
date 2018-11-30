@@ -30,7 +30,6 @@ const onCloseModal = (modalName) => {
 
 const WrappedComponent = compose(
   graphql(closeModal, {name: 'closeModal'})
-)
-(ModalsContainer);
+)(ModalsContainer);
 
 export default WrappedComponent;

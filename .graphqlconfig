@@ -6,7 +6,7 @@
       "extensions": {
         "schemaPath": "src/schemas/remote.graphql",
         "endpoints": {
-          "dev": "http://10.112.32.5:5000/graphql"
+          "dev": "http://localhost:5000/graphql"
         }
       }
     }

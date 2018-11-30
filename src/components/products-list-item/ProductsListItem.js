@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton/IconButton';
 import SettingsIcon from '@material-ui/icons/MoreVert';
 import GridListTile from '@material-ui/core/GridListTile/GridListTile';
 import styles from './products-list-item.module.css';
-import {Constants} from "../../utils/constants";
 
 const productsListItem = (props) => {
   const product = props.product;

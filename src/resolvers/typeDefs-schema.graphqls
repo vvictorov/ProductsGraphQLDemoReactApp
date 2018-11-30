@@ -1,7 +1,0 @@
-type Modal {
-    name: String!
-}
-
-type Query {
-    modals: [Modal]
-}
