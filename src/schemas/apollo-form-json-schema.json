@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "Query": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "object",
+          "properties": {
+            "return": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            },
+            "arguments": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          "required": []
+        },
+        "category": {
+          "type": "object",
+          "properties": {
+            "return": {
+              "$ref": "#/definitions/Category"
+            },
+            "arguments": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                }
+              },
+              "required": []
+            }
+          },
+          "required": []
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "return": {
+              "$ref": "#/definitions/Product"
+            },
+            "arguments": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                }
+              },
+              "required": []
+            }
+          },
+          "required": []
+        },
+        "products": {
+          "type": "object",
+          "properties": {
+            "return": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            },
+            "arguments": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    },
+    "Mutation": {
+      "type": "object",
+      "properties": {
+        "createProduct": {
+          "type": "object",
+          "properties": {
+            "return": {
+              "$ref": "#/definitions/Product"
+            },
+            "arguments": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "$ref": "#/definitions/ProductInput"
+                }
+              },
+              "required": [
+                "product"
+              ]
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    }
+  },
+  "definitions": {
+    "Product": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "cover": {
+          "$ref": "#/definitions/ProductImage"
+        },
+        "id": {
+          "type": "number"
+        },
+        "stock": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "unit": {}
+      },
+      "required": [
+        "category",
+        "id",
+        "stock",
+        "title"
+      ]
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Product"
+          }
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title"
+      ]
+    },
+    "ProductImage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "path"
+      ]
+    },
+    "ProductInput": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "stock": {
+          "type": "number"
+        },
+        "unit": {},
+        "category": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "title",
+        "stock",
+        "unit",
+        "category"
+      ]
+    }
+  }
+}

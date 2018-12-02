@@ -10,6 +10,16 @@ import InputLabel from "@material-ui/core/es/InputLabel/InputLabel";
 import Select from "@material-ui/core/es/Select/Select";
 import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
 import withMobileDialog from '@material-ui/core/withMobileDialog';
+import {configure} from 'react-apollo-form';
+import client from '../../apollo';
+import schema from '../../schemas/remote.graphql';
+import createProductMutation from '../../mutations/createProduct.graphql';
+import graphQlToJsonSchema from '../../utils/graphQLToJsonSchema';
+
+const DemoForm = configure({
+  client,
+  jsonSchema: graphQlToJsonSchema(schema)
+});
 
 class UpdateProductModal extends React.Component {
 
@@ -33,7 +43,16 @@ class UpdateProductModal extends React.Component {
 
             <DialogTitle id="form-dialog-title">Промени продукт</DialogTitle>
             <DialogContent>
-              Update product dialog
+              <DemoForm config={{
+                mutation: {
+                  name: 'createProduct',
+                  document: createProductMutation
+                }
+              }}
+                        data={{}}
+                        ui={{}}
+              />
+
               {/*<Field name="title" component={this.renderTitleField} />*/}
               {/*<Field name="categoryId" component={this.renderCategoryField} />*/}
               {/*<Field name="stock" component={this.renderStockField} />*/}

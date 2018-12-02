@@ -1,9 +1,9 @@
 # source: http://localhost:5000/graphql
-# timestamp: Fri Nov 30 2018 23:14:35 GMT+0200 (FLE Standard Time)
+# timestamp: Sun Dec 02 2018 13:09:48 GMT+0200 (FLE Standard Time)
 
-type CategoryType {
+type Category {
   id: Int!
-  products: [ProductType]
+  products: [Product]
   title: String!
 }
 
@@ -35,10 +35,19 @@ The `Milliseconds` scalar type represents a period of time represented as the to
 scalar Milliseconds
 
 type Mutation {
-  createProduct(product: ProductInput!): ProductType
+  createProduct(product: ProductInput!): Product
 }
 
-type ProductImageType {
+type Product {
+  category: Category!
+  cover: ProductImage
+  id: Int!
+  stock: Float!
+  title: String!
+  unit: Unit
+}
+
+type ProductImage {
   id: Int!
   path: String!
 }
@@ -46,24 +55,15 @@ type ProductImageType {
 input ProductInput {
   title: String!
   stock: Float!
-  unitEnum: Unit!
-  categoryId: Int!
-}
-
-type ProductType {
-  category: CategoryType
-  cover: ProductImageType
-  id: Int!
-  stock: Float!
-  title: String!
-  unit: String!
+  unit: Unit!
+  category: Int!
 }
 
 type Query {
-  categories: [CategoryType]
-  category(id: Int = null): CategoryType
-  product(id: Int = null): ProductType
-  products: [ProductType]
+  categories: [Category]
+  category(id: Int = null): Category
+  product(id: Int = null): Product
+  products: [Product]
 }
 
 """
