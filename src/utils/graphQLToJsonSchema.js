@@ -10,8 +10,6 @@ const graphQlToJsonSchema = (graphQlSchema) => {
 
   const introspection = graphqlSync(buildSchema(graphQlSchema), introspectionQuery).data;
 
-  console.log(fromIntrospectionQuery(introspection));
-
   return fromIntrospectionQuery(introspection);
 };
 
