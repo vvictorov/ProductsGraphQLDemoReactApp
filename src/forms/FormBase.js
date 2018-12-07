@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import addExtraProps from '../utils/addExtraProps';
 
 const customFields = {
-  StringField: MaterialTextField
+  "BaseInput": MaterialTextField
 };
 
 const theme = {
@@ -34,7 +34,8 @@ const theme = {
       );
     }
   },
-  fields: customFields,
+  // fields: customFields,
+  widgets: customFields,
   renderers: {
     saveButton: p => {
       return (
@@ -58,13 +59,15 @@ const theme = {
   }
 };
 
-const jsonSchemaNew = graphQlToJsonSchema(schema);
+const jsonSchema = graphQlToJsonSchema(schema);
 
 const ApolloForm = configure({
   client,
-  jsonSchema: jsonSchemaNew,
+  jsonSchema: jsonSchema,
   theme: theme
 });
+
+ApolloForm.registerWidget('input[type="text"]', MaterialTextField);
 
 class FormBase extends React.Component{
 

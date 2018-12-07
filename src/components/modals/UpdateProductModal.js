@@ -18,30 +18,36 @@ class UpdateProductModal extends React.Component {
 
     return (
       <div>
-          <Dialog
-            open={this.props.isOpen}
-            onClose={this.props.close}
-            aria-labelledby="form-dialog-title"
-            maxWidth={!this.props.fullScreen ? "xs" : false}
-            fullScreen={this.props.fullScreen}
-            disableEnforceFocus={true}
-            disableBackdropClick={true}
-          >
+        <Dialog
+          open={this.props.isOpen}
+          onClose={this.props.close}
+          aria-labelledby="form-dialog-title"
+          maxWidth={!this.props.fullScreen ? "xs" : false}
+          fullScreen={this.props.fullScreen}
+          disableEnforceFocus={true}
+          disableBackdropClick={true}
+        >
 
-            <DialogContent>
-              <FormBase config={{
-                mutation: {
-                  name: 'createProduct',
-                  document: createProductMutation
-                }
-              }}
-                        data={{}}
-                        title="Промени продукт"
-                        onSubmit={this.onSubmit}
-                        onCancel={this.onCancel}
-              />
-            </DialogContent>
-          </Dialog>
+          <DialogContent>
+            <FormBase config={{
+              mutation: {
+                name: 'createProduct',
+                document: createProductMutation
+              }
+            }}
+                      // ui={{
+                      //   product: {
+                      //     category: {
+                      //       "ui:widget": "StringField"
+                      //     }
+                      //   }
+                      // }}
+                      title="Промени продукт"
+                      onSubmit={this.onSubmit}
+                      onCancel={this.onCancel}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
@@ -55,4 +61,4 @@ class UpdateProductModal extends React.Component {
   }
 }
 
-export default withMobileDialog() (UpdateProductModal);
+export default withMobileDialog()(UpdateProductModal);

@@ -51,7 +51,7 @@ class MaterialTextField extends React.Component {
       });
     }
 
-    const label = (typeof this.props.description !== typeof undefined && this.props.description !== null) ? this.props.description : this.props.name;
+    const label = (typeof schema.description !== typeof undefined && schema.description !== null) ? schema.description : this.props.name;
 
     return (
       <TextField
