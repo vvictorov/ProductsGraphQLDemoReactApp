@@ -26,6 +26,14 @@ class MaterialTextField extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+
+    const value = (typeof this.props.formData !== typeof undefined && this.props.formData !== null &&
+      typeof this.props.formData[this.props.name] !== typeof undefined) ?
+      this.props.formData[this.props.name] : "";
+
+    this.state = {
+      value: value
+    }
   }
 
   render() {
@@ -43,38 +51,30 @@ class MaterialTextField extends React.Component {
       });
     }
 
-    const value = (typeof this.props.formData !== typeof undefined && this.props.formData !== null &&
-                   typeof this.props.formData[this.props.name] !== typeof undefined) ?
-      this.props.formData[this.props.name] : "";
+    const label = (typeof this.props.description !== typeof undefined && this.props.description !== null) ? this.props.description : this.props.name;
 
     return (
       <TextField
         id={this.props.name}
-        label={this.props.name}
+        label={label}
         name={this.props.name}
-        value={value}
+        value={this.state.value}
         type={schema.type}
         className={classes.textField}
-        onChange={this.handleSelectChange(this.props.name)}
+        onChange={this.handleChange}
         select={options !== null}
         margin="normal"
       >
-        <MenuItem key="test" value="test">
-          test
-        </MenuItem>
+        {options}
       </TextField>
     );
   }
 
   handleChange = (event) => {
-    this.props.onChange(event.currentTarget.value);
-  };
-
-  handleSelectChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      value: event.target.value
     });
-    this.handleChange(event);
+    this.props.onChange(event.target.value);
   };
 }
 

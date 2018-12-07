@@ -6,9 +6,9 @@ import {
 
 import { fromIntrospectionQuery } from 'graphql-2-json-schema/dist/lib/index.js';
 
-const graphQlToJsonSchema = (graphQlSchema) => {
+const graphQlToJsonSchema = (schema) => {
 
-  const introspection = graphqlSync(buildSchema(graphQlSchema), introspectionQuery).data;
+  const introspection = graphqlSync(buildSchema(schema), introspectionQuery).data;
 
   return fromIntrospectionQuery(introspection);
 };

@@ -7,6 +7,7 @@ import MaterialTextField from "./fields/MaterialTextField";
 import {Form} from '@material-ui/core';
 import Button from '@material-ui/core/es/Button/Button';
 import Typography from "@material-ui/core/Typography/Typography";
+import addExtraProps from '../utils/addExtraProps';
 
 const customFields = {
   StringField: MaterialTextField
@@ -15,11 +16,13 @@ const customFields = {
 const theme = {
   templates: {
     FieldTemplate: props => {
-      const { classNames, help, description, errors, children, rawErrors, label } = props;
+      const { classNames, help, description, rawDescription, errors, children, rawErrors, label } = props;
+
+      const field = addExtraProps(children, {description: rawDescription});
+
       return (
         <div>
-          {children}
-          <span>{description}</span>
+          {field}
         </div>
       );
     },
@@ -55,9 +58,11 @@ const theme = {
   }
 };
 
+const jsonSchemaNew = graphQlToJsonSchema(schema);
+
 const ApolloForm = configure({
   client,
-  jsonSchema: graphQlToJsonSchema(schema),
+  jsonSchema: jsonSchemaNew,
   theme: theme
 });
 

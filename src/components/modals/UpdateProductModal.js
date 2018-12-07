@@ -24,6 +24,8 @@ class UpdateProductModal extends React.Component {
             aria-labelledby="form-dialog-title"
             maxWidth={!this.props.fullScreen ? "xs" : false}
             fullScreen={this.props.fullScreen}
+            disableEnforceFocus={true}
+            disableBackdropClick={true}
           >
 
             <DialogContent>

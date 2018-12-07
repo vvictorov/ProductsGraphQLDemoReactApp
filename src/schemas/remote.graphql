@@ -1,5 +1,5 @@
 # source: http://localhost:5000/graphql
-# timestamp: Sun Dec 02 2018 13:09:48 GMT+0200 (FLE Standard Time)
+# timestamp: Fri Dec 07 2018 11:52:49 GMT+0200 (EET)
 
 type Category {
   id: Int!
@@ -53,6 +53,7 @@ type ProductImage {
 }
 
 input ProductInput {
+  """Заглавие"""
   title: String!
   stock: Float!
   unit: Unit!
@@ -79,7 +80,7 @@ enum Unit {
   """Грамове"""
   G
 
-  """Килограми"""
+  """Литри"""
   L
 
   """Милилитри"""
