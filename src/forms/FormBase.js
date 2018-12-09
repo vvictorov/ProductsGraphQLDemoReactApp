@@ -3,14 +3,16 @@ import {configure} from "react-apollo-form";
 import client from "../apollo";
 import graphQlToJsonSchema from "../utils/graphQLToJsonSchema";
 import schema from "../schemas/remote.graphql";
-import MaterialTextField from "./fields/MaterialTextField";
+import MaterialTextField from "./widgets/MaterialTextField";
 import {Form} from '@material-ui/core';
 import Button from '@material-ui/core/es/Button/Button';
 import Typography from "@material-ui/core/Typography/Typography";
 import addExtraProps from '../utils/addExtraProps';
+import MaterialSelect from './widgets/MaterialSelect';
 
-const customFields = {
-  "BaseInput": MaterialTextField
+const customWidgets = {
+  "BaseInput": MaterialTextField,
+  "select": MaterialSelect
 };
 
 const theme = {
@@ -34,8 +36,7 @@ const theme = {
       );
     }
   },
-  // fields: customFields,
-  widgets: customFields,
+  widgets: customWidgets,
   renderers: {
     saveButton: p => {
       return (
@@ -66,8 +67,6 @@ const ApolloForm = configure({
   jsonSchema: jsonSchema,
   theme: theme
 });
-
-ApolloForm.registerWidget('input[type="text"]', MaterialTextField);
 
 class FormBase extends React.Component{
 

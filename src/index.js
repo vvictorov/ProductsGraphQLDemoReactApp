@@ -5,7 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {ApolloProvider} from "react-apollo";
 import client from './apollo';
+import extensionFunctions from './utils/extensionFunctions';
 
+extensionFunctions();
 
 ReactDOM.render((
 

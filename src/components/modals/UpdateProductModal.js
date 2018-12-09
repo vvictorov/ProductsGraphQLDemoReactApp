@@ -9,7 +9,7 @@ import FormBase from "../../forms/FormBase";
 class UpdateProductModal extends React.Component {
 
   constructor(props) {
-    super();
+    super(props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
   }
