@@ -1,3 +1,4 @@
 export const defaults = {
-  modals: []
+  modals: [],
+  selectedProduct: null
 };

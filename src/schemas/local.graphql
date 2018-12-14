@@ -4,13 +4,19 @@ type Modal {
     name: String!
 }
 
+extend type Product {
+    __typename: Product
+}
+
 extend type Query {
     modals: [Modal]
+    selectedProduct: Product
 }
 
 extend type Mutation {
     openModal(name: String): Modal
     closeModal(name: String): Modal
+    selectProduct(id: Int): Product
 }
 
 directive @client(param: String) on FIELD

@@ -13,7 +13,7 @@ module.exports = {
         {
           test: /\.(graphql|gql)$/,
           exclude: /node_modules/,
-          loader: 'graphql-import-loader',
+          loader: 'graphql-tag/loader'
         },
       ],
     },

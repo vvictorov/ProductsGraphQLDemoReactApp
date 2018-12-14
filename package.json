@@ -32,7 +32,8 @@
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "rm -rf ./node_modules/.cache/babel-loader && craco start",
+    "startw": "craco start",
     "build": "craco build",
     "test": "craco test --env=jsdom",
     "eject": "react-scripts eject",

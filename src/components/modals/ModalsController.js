@@ -14,7 +14,9 @@ export default class ModalsController extends React.Component {
     return (
         <div>
             <UpdateProductModal isOpen={this.props.modals.some(x => x.name === Constants.ModalDialogs.UpdateProduct)}
-                                close={() => this.onModalClose(Constants.ModalDialogs.UpdateProduct)}/>
+                                close={() => this.onModalClose(Constants.ModalDialogs.UpdateProduct)}
+                                product={this.props.selectedProduct}
+            />
         </div>
     );
   }

@@ -1,0 +1,16 @@
+query SelectedProduct {
+    selectedProduct @client {
+        id,
+        title,
+        stock,
+        unit,
+        category {
+            id,
+            title
+        },
+        cover {
+            id,
+            path
+        }
+    }
+}

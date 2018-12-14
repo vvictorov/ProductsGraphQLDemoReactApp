@@ -1,6 +1,9 @@
 import modalQuery from "../queries/modals.graphql";
 
-export const openModalResolver = (_, {name}, {cache}) => {
+export const openModalResolver = (_, variables, context) => {
+
+  const {name} = variables;
+  const {cache} = context;
 
   const {modals: currentModals} = cache.readQuery({query: modalQuery});
 

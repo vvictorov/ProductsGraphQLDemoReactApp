@@ -9,7 +9,7 @@ import {Constants} from "./utils/constants";
 import {defaults} from "./resolvers/defaults";
 import localSchema from "./schemas/local.graphql";
 
-const fixTypeDefsFormat = (typeDefs) => typeDefs.replace("extend ", "");
+let typeDefs = localSchema.replaceAll('extend ', '');
 
 const cache = new InMemoryCache();
 
@@ -17,7 +17,7 @@ const stateLink = withClientState({
   cache,
   resolvers,
   defaults,
-  typeDefs: fixTypeDefsFormat(localSchema)
+  typeDefs: typeDefs
 });
 
 const client = new ApolloClient({
@@ -36,7 +36,9 @@ const client = new ApolloClient({
       uri: Constants.Api.GraphQLUrl
     })
   ]),
-  cache: cache
+  cache: cache,
+  connectToDevTools: true,
+  tokenName: 'apollo-token'
 });
 
 export default client;

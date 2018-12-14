@@ -32,16 +32,16 @@ class UpdateProductModal extends React.Component {
             <FormBase config={{
               mutation: {
                 name: 'createProduct',
-                document: createProductMutation
+                document: createProductMutation,
               }
             }}
-                      // ui={{
-                      //   product: {
-                      //     category: {
-                      //       "ui:widget": "StringField"
-                      //     }
-                      //   }
-                      // }}
+                      ui={{
+                        product: {
+                          id: {
+                            "ui:widget": "hidden"
+                          }
+                        }
+                      }}
                       title="Промени продукт"
                       onSubmit={this.onSubmit}
                       onCancel={this.onCancel}

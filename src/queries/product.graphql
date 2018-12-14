@@ -1,0 +1,15 @@
+query GetProduct($id: Int!) {
+    product(id: $id){
+        id,
+        title,
+        stock,
+        unit,
+        category {
+            id,
+            title
+        }
+        cover {
+            path
+        }
+    }
+}

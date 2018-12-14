@@ -1,0 +1,16 @@
+mutation SelectProduct($id: Int!) {
+    selectProduct(id: $id) @client {
+        id,
+        title,
+        category {
+            id,
+            title
+        },
+        stock,
+        unit,
+        cover {
+            id,
+            path
+        }
+    }
+}

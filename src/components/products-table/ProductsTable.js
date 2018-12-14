@@ -44,6 +44,15 @@ const columns = [
     }
   },
   {
+    name: "categoryId",
+    options: {
+      filter: false,
+      sort: false,
+      search: false,
+      display: 'excluded'
+    }
+  },
+  {
     name: "Количество",
     options: {
       filter: false,
@@ -68,10 +77,9 @@ class ProductsTable extends React.Component {
       filterType: 'checkbox',
       selectableRows: false,
       onRowClick: (rowData, rowMeta) => {
-        this.props.openUpdateModal();
-        // const productId = rowData[0];
-        // const product = this.props.products.find(x => x.id === productId);
-        // this.rowClicked(product);
+        const productId = rowData[0];
+
+        this.props.openUpdateModal(productId);
       }
     };
   }
@@ -83,7 +91,7 @@ class ProductsTable extends React.Component {
   render() {
     const data = this.props.products.map(product => {
       const cover = (product.cover !== null) ? product.cover.path : null;
-      return [product.id, cover, product.title, product.category.title, product.stock, product.unit];
+      return [product.id, cover, product.title, product.category.title, product.category.id, product.stock, product.unit];
     });
     return (
       <div styleName="table">

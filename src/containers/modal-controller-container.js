@@ -1,6 +1,7 @@
 import React from 'react';
 import {compose, graphql, Query} from "react-apollo";
 import modalsQuery from '../queries/modals.graphql';
+import selectedProductQuery from '../queries/selectedProduct.graphql';
 import ModalsController from '../components/modals/ModalsController';
 import closeModal from "../mutations/closeModal.graphql";
 
@@ -12,9 +13,13 @@ const ModalsContainer = (props) => {
 
   return (
     <Query query={modalsQuery}>
-      {({ data }) => {
-        return <ModalsController modals={data.modals} closeModal={onCloseModal}/>
-      }}
+      {({ data: {modals} }) => (
+        <Query query={selectedProductQuery}>
+          {({ data: {selectedProduct} }) => {
+            return <ModalsController modals={modals} closeModal={onCloseModal} selectedProduct={selectedProduct}/>
+          }}
+        </Query>
+      )}
     </Query>
   );
 };
