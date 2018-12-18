@@ -6,6 +6,10 @@ table {
     outline: none !important;
 }
 
+.table > div {
+    border-radius: 0;
+}
+
 @media (max-width: 960px) {
     .table td:first-child, .table td:nth-child(2) {
         height: 40px;

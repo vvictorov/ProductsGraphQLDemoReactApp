@@ -23,7 +23,7 @@
     "react": "^16.6.0",
     "react-apollo": "^2.3.1",
     "react-apollo-form": "^0.1.7",
-    "react-css-modules": "^4.7.2",
+    "react-css-modules": "^4.7.8",
     "react-dom": "^16.6.0",
     "react-scripts": "^2.1.1",
     "react-scripts-cssmodules": "^1.1.50",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "rm -rf ./node_modules/.cache/babel-loader && craco start",
-    "startw": "craco start",
+    "startw": "(if exist node_modules\\.cache\\babel-loader rmdir /s /q node_modules\\.cache\\babel-loader) && craco start",
     "build": "craco build",
     "test": "craco test --env=jsdom",
     "eject": "react-scripts eject",

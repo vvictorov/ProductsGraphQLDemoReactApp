@@ -20,7 +20,7 @@ export const openModalResolver = (_, variables, context) => {
     data
   });
 
-  return name;
+  return data.modals;
 };
 
 export const closeModalResolver = (_, {name}, {cache}) => {
@@ -48,7 +48,7 @@ export const closeModalResolver = (_, {name}, {cache}) => {
     data
   });
 
-  return name;
+  return data.modals;
 };
 
 function * generateId () {

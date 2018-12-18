@@ -9,7 +9,6 @@ query SelectedProduct {
             title
         },
         cover {
-            id,
             path
         }
     }

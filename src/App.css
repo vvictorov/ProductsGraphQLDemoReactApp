@@ -1,5 +1,8 @@
-#page {
-    overflow-y: scroll;
-    height: calc(100vh - 164px);
-    padding: 50px !important;
+#app {
+    display: flex;
+}
+
+main#content {
+    flex-grow: 1;
+    padding: 64px 0;
 }

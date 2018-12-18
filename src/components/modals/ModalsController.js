@@ -4,9 +4,9 @@ import UpdateProductModal from './UpdateProductModal';
 
 export default class ModalsController extends React.Component {
   constructor(props) {
-    super();
+    super(props);
 
-    this.onModalClose = this.onModalClose.bind(this);
+    this.onUpdateProductModalClose = this.onUpdateProductModalClose.bind(this);
   }
 
   render() {
@@ -14,14 +14,14 @@ export default class ModalsController extends React.Component {
     return (
         <div>
             <UpdateProductModal isOpen={this.props.modals.some(x => x.name === Constants.ModalDialogs.UpdateProduct)}
-                                close={() => this.onModalClose(Constants.ModalDialogs.UpdateProduct)}
+                                close={this.onUpdateProductModalClose}
                                 product={this.props.selectedProduct}
             />
         </div>
     );
   }
 
-  onModalClose(modalName) {
-    this.props.closeModal(modalName);
+  onUpdateProductModalClose() {
+    this.props.closeModal(Constants.ModalDialogs.UpdateProduct);
   }
 }

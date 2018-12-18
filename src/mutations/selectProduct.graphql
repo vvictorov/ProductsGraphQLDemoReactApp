@@ -9,7 +9,6 @@ mutation SelectProduct($id: Int!) {
         stock,
         unit,
         cover {
-            id,
             path
         }
     }

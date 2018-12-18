@@ -8,8 +8,9 @@ import {resolvers} from './resolvers/resolvers';
 import {Constants} from "./utils/constants";
 import {defaults} from "./resolvers/defaults";
 import localSchema from "./schemas/local.graphql";
+import {stringReplaceAll} from './utils/extensionFunctions';
 
-let typeDefs = localSchema.replaceAll('extend ', '');
+let typeDefs = stringReplaceAll(localSchema, 'extend ', '');
 
 const cache = new InMemoryCache();
 

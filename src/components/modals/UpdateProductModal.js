@@ -2,9 +2,7 @@ import React from 'react';
 import Dialog from '@material-ui/core/es/Dialog/Dialog';
 import DialogContent from '@material-ui/core/es/DialogContent/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import {configure} from 'react-apollo-form';
-import createProductMutation from '../../mutations/createProduct.graphql';
-import FormBase from "../../forms/FormBase";
+import UpdateProductForm from '../../forms/UpdateProductForm';
 
 class UpdateProductModal extends React.Component {
 
@@ -15,6 +13,12 @@ class UpdateProductModal extends React.Component {
   }
 
   render() {
+
+    if (this.props.product === null) {
+      return null;
+    }
+
+    const product = this.props.product;
 
     return (
       <div>
@@ -29,22 +33,9 @@ class UpdateProductModal extends React.Component {
         >
 
           <DialogContent>
-            <FormBase config={{
-              mutation: {
-                name: 'createProduct',
-                document: createProductMutation,
-              }
-            }}
-                      ui={{
-                        product: {
-                          id: {
-                            "ui:widget": "hidden"
-                          }
-                        }
-                      }}
-                      title="Промени продукт"
-                      onSubmit={this.onSubmit}
-                      onCancel={this.onCancel}
+            <UpdateProductForm product={product}
+                               onSubmit={this.onSubmit}
+                               onCancel={this.onCancel}
             />
           </DialogContent>
         </Dialog>
