@@ -11,6 +11,7 @@
 
 # misc
 .idea
+/.idea
 .directory
 .DS_Store
 .env.local
