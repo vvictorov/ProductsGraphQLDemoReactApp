@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField/TextField";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {stringCapitalize} from '../../utils/extensionFunctions';
+import Input from "@material-ui/core/Input";
 
 const styles = theme => ({
   container: {
@@ -25,22 +26,11 @@ class MaterialTextField extends React.Component {
   }
 
   render() {
-    const {schema} = this.props;
-    const {classes} = this.props;
 
-    const value = (typeof this.props.value !== typeof undefined && this.props.value !== null) ? this.props.value : "";
+    const value = (typeof this.props.value !== typeof undefined && this.props.value !== null) ? this.props.value : null;
 
     return (
-      <TextField
-        id={this.props.name}
-        label={stringCapitalize(this.props.label)}
-        name={this.props.name}
-        type={schema.type}
-        className={classes.textField}
-        onChange={this.handleChange}
-        margin="normal"
-        value={value}
-      />
+        <Input id={this.props.id} value={value} onChange={this.handleChange} name={this.props.name} />
     );
   }
 

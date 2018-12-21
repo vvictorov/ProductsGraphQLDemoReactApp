@@ -62,21 +62,15 @@ class SimpleSelect extends React.Component {
     const value = (typeof this.props.value !== typeof undefined && this.props.value !== null) ? this.props.value : "";
 
     return (
-      <div className={classes.root}>
-        <FormControl className={classes.formControl}
-                     fullWidth
-                     margin="normal">
-          <InputLabel htmlFor={this.props.label}>{stringCapitalize(this.props.label)}</InputLabel>
           <Select
             value={value}
             onChange={this.handleChange}
             id={this.props.label}
             name={this.props.label}
+            fullWidth
           >
             {options}
           </Select>
-        </FormControl>
-      </div>
     );
   }
 }
